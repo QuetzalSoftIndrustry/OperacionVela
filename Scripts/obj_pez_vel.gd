@@ -13,12 +13,16 @@ var movimiento : Vector2 = Vector2()
 const UP : Vector2 = Vector2(0,-1)
 var limite
 
+
+func _ready():
+	limite = get_viewport_rect().size
+
 # Funcion main (loop)
 func _physics_process(delta):
 	
 	# Detectar que tecla se pulso y asignarle un valor
 	mov = -int(Input.is_action_pressed("Izquierda")) + int(Input.is_action_pressed("Derecha"))
-	limite = get_viewport_rect().size
+	
 	# Rotar
 	if Input.is_action_pressed("Arriba"):
 		self.rotate(-v_rot * dir * delta)
@@ -58,11 +62,14 @@ func _physics_process(delta):
 		elif (velosidad_reciduo < 0):
 			velosidad_reciduo = 0
 	
+	#colisiones con los limites
+	position.x = clamp(position.x,0,limite.x)
+	position.y= clamp(position.y,0,limite.y)
+	
+	
 	# Mover
 	movimiento = Vector2(aceleracion, 0).rotated(self.rotation)
 	move_and_slide(movimiento, UP)
 	
-	position.x = clamp(position.x,0,limite.x)
-	position.y= clamp(position.y,0,limite.y)
 	
 

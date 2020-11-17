@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Objetos/obj_pez_vel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objetos/obj_barco.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Prueba.gd" type="Script" id=3]
 [ext_resource path="res://Objetos/hp.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Tilemap/Suelo.tres" type="TileSet" id=5]
 
 [node name="Prueba" type="Node2D"]
 script = ExtResource( 3 )
@@ -18,14 +19,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 1179682, 3, 0, 1179683, 4, 0, 1245218, 6, 0, 1245219, 7, 0, 1310720, 4, 0, 1310721, 4, 0, 1310722, 4, 0, 1310723, 4, 0, 1310724, 4, 0, 1310725, 4, 0, 1310726, 4, 0, 1310727, 4, 0, 1310728, 4, 0, 1310729, 4, 0, 1310730, 4, 0, 1310731, 4, 0, 1310732, 4, 0, 1310733, 4, 0, 1310734, 4, 0, 1310735, 4, 0, 1310736, 4, 0, 1310737, 4, 0, 1310738, 4, 0, 1310739, 4, 0, 1310740, 4, 0, 1310741, 4, 0, 1310742, 4, 0, 1310743, 4, 0, 1310744, 4, 0, 1310745, 4, 0, 1310746, 4, 0, 1310747, 4, 0, 1310748, 4, 0, 1310749, 4, 0, 1310750, 4, 0, 1310751, 4, 0, 1310752, 4, 0, 1310753, 4, 0, 1310754, 7, 0, 1310755, 7, 0 )
+
 [node name="obj_player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 600, 456 )
-friccion = 3.0
+friccion = 2.0
 
 [node name="obj_barco" parent="." instance=ExtResource( 2 )]
 position = Vector2( 552, 168 )
 tiempo_crear_basura = 1.0
-esperar_para_crear = 10.0
+esperar_para_crear = 0.0
 velosidad = 200
 
 [node name="HUD" type="CanvasLayer" parent="." groups=[
