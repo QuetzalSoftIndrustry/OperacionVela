@@ -2,8 +2,8 @@ extends StaticBody2D
 
 # Variables
 export(bool) var tirar_basura : bool = true
-export(float) var tiempo_crear_basura : float = 5
-export(float) var esperar_para_crear : float = 2
+export(float) var tiempo_crear_basura : float = 4
+export(float) var esperar_para_crear : float = 1
 
 export(int) var vida : int = 10
 

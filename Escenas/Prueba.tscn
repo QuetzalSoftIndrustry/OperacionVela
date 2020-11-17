@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objetos/obj_pez_vel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objetos/obj_barco.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Objetos/obj_ola.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Prueba.gd" type="Script" id=3]
+[ext_resource path="res://Objetos/hp.tscn" type="PackedScene" id=4]
 
 [node name="Prueba" type="Node2D"]
+script = ExtResource( 3 )
+spr_vidas = ExtResource( 4 )
 
 [node name="fondo_agua" type="ColorRect" parent="."]
 margin_top = 240.0
@@ -25,8 +28,6 @@ tiempo_crear_basura = 1.0
 esperar_para_crear = 10.0
 velosidad = 200
 
-[node name="obj_ola" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 240 )
-
-[node name="obj_ola2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 24, 240 )
+[node name="HUD" type="CanvasLayer" parent="." groups=[
+"HUD",
+]]
