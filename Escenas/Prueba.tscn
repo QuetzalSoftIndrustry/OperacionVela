@@ -96,19 +96,19 @@ velosidad = 200
 ]]
 
 [node name="GameOverCanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="GameOverCanvasLayer"]
-visible = false
 modulate = Color( 0.992157, 0.992157, 0.992157, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.6 )
+color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="GameOverCanvasLayer/ColorRect"]
-modulate = Color( 1, 0.0117647, 0.0117647, 0.941176 )
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -124,5 +124,6 @@ __meta__ = {
 }
 
 [node name="AnimationGameOver" type="AnimationPlayer" parent="."]
+pause_mode = 2
 anims/GameOverAnimation = SubResource( 1 )
 "anims/Inicio De juego" = SubResource( 2 )

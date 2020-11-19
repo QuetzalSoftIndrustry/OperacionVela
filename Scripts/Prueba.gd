@@ -27,10 +27,11 @@ func quitar_vida():
 		var vida_sprite : Sprite = listas_vidas[ round(vidas / 2)]
 		vida_sprite.frame += 1
 		if (vidas == 0):
+			get_tree().paused = true
 			get_node("AnimationGameOver").play("GameOverAnimation")
-			yield(get_node("AnimationGameOver"),"animation_finished")
-			self.queue_free()
-			get_tree().paused()
+			#yield(get_node("AnimationGameOver"),"animation_finished")
+			#self.queue_free()
+			#get_tree().paused()
 #func agregar_vida():
 	#vidas_p += 1
 	#var newVida = spr_vidas.intance()
