@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Objetos/obj_pez_vel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objetos/obj_barco.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Objetos/hp.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Tilemap/Suelo.tres" type="TileSet" id=5]
 [ext_resource path="res://Sprites/GameOver.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/GameOverCanvasLayer.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "GameOverAnimation"
@@ -97,6 +98,7 @@ velosidad = 200
 
 [node name="GameOverCanvasLayer" type="CanvasLayer" parent="."]
 pause_mode = 2
+script = ExtResource( 7 )
 
 [node name="ColorRect" type="ColorRect" parent="GameOverCanvasLayer"]
 modulate = Color( 0.992157, 0.992157, 0.992157, 1 )
@@ -119,6 +121,20 @@ margin_right = 1043.92
 margin_bottom = 288.857
 rect_scale = Vector2( 0.599739, 0.709361 )
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GameOverCanvasLayer/ColorRect/TextureRect"]
+margin_left = 30.1515
+margin_top = 325.847
+margin_right = 349.151
+margin_bottom = 370.847
+rect_scale = Vector2( 4, 4 )
+text = "Preciona cualquier tecla para continuar...
+"
+align = 1
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/barco_test.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/obj_barco.gd" type="Script" id=2]
+[ext_resource path="res://Objetos/obj_red.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 48.0
@@ -41,9 +42,6 @@ tracks/1/keys = {
 ]]
 scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -12 )
@@ -61,3 +59,16 @@ anims/flotando = SubResource( 2 )
 
 [node name="Spawner_position" type="Position2D" parent="."]
 position = Vector2( 0, -48 )
+
+[node name="Spawner_redes" type="Position2D" parent="."]
+position = Vector2( 0, 106.667 )
+
+[node name="obj_red" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 106.667 )
+
+[node name="GrooveJoint2D" type="PinJoint2D" parent="obj_red"]
+node_a = NodePath("../..")
+node_b = NodePath("..")
+bias = 0.306
+disable_collision = false
+softness = 2.0

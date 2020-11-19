@@ -13,6 +13,8 @@ var aceleracion : int = 0
 
 #obj_basura
 const BASURA = preload("res://Objetos/obj_basura.tscn")
+#obj_red
+const REDD = preload("res://Objetos/obj_red.tscn")
 
 #timer_basura
 var timer_basura : Timer
@@ -21,12 +23,23 @@ func _ready():
 	timer_basura = Timer.new()
 	self.add_child(timer_basura)
 	timer_basura.one_shot = false
-	timer_basura.wait_time = 2
+	timer_basura.wait_time = tiempo_crear_basura
 	timer_basura.connect("timeout",self, "_crear_basura")
 	
 	if (tirar_basura):
 		yield(get_tree().create_timer(esperar_para_crear),"timeout")
 		timer_basura.start()
+	
+	"""var nueva_red = REDD.instance()
+	get_parent().add_child(nueva_red)
+	nueva_red.position = $Spawner_redes.global_position
+	
+	var nueva_cadena : DampedSpringJoint2D = CADENA.instance()
+	get_parent().add_child(nueva_cadena)
+	nueva_cadena.position = $Spawner_redes.global_position
+	nueva_cadena.node_a = get_tree().get_nodes_in_group("obj_barco")[0].get_path()
+	nueva_cadena.node_b = get_tree().get_nodes_in_group("obj_red")[0].get_path()
+	"""
 
 
 # Funcion main (loop)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/obj_pez_vel.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/spr_vel_nadando.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/spr_vel_Muerto.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 24.0
@@ -12,7 +13,7 @@ resource_name = "anim_nadando"
 length = 1.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -35,13 +36,25 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 1.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 2 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "anim_quieto"
 length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -64,16 +77,25 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.3 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 2 ) ]
+}
 
 [node name="obj_player" type="KinematicBody2D" groups=[
 "obj_player",
 ]]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 5.72205e-06, 0 )
 scale = Vector2( 1.11123, 1.47785 )
 texture = ExtResource( 2 )
@@ -86,5 +108,12 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.3
 anims/anim_nadando = SubResource( 2 )
 anims/anim_quieto = SubResource( 3 )
+
+[node name="Sprite_muerto" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 32 )
+scale = Vector2( 1.16667, 1.375 )
+texture = ExtResource( 3 )
