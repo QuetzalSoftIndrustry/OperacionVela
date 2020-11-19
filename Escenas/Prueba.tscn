@@ -1,10 +1,66 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Objetos/obj_pez_vel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objetos/obj_barco.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Prueba.gd" type="Script" id=3]
 [ext_resource path="res://Objetos/hp.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Tilemap/Suelo.tres" type="TileSet" id=5]
+[ext_resource path="res://Sprites/GameOver.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "GameOverAnimation"
+step = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameOverCanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GameOverCanvasLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.298215 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.6 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GameOverCanvasLayer/ColorRect/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.349913, 0.719483 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.941176 ), Color( 1, 0.0117647, 0.0117647, 0.941176 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Inicio De juego"
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameOverCanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="Prueba" type="Node2D"]
 script = ExtResource( 3 )
@@ -38,3 +94,35 @@ velosidad = 200
 [node name="HUD" type="CanvasLayer" parent="." groups=[
 "HUD",
 ]]
+
+[node name="GameOverCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="GameOverCanvasLayer"]
+visible = false
+modulate = Color( 0.992157, 0.992157, 0.992157, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="GameOverCanvasLayer/ColorRect"]
+modulate = Color( 1, 0.0117647, 0.0117647, 0.941176 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -402.083
+margin_top = -183.143
+margin_right = 1043.92
+margin_bottom = 288.857
+rect_scale = Vector2( 0.599739, 0.709361 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationGameOver" type="AnimationPlayer" parent="."]
+anims/GameOverAnimation = SubResource( 1 )
+"anims/Inicio De juego" = SubResource( 2 )

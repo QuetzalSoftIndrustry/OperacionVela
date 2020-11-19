@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/spr_vel_Muerto.png" type="Texture" id=1]
+
+[node name="spr_dead" type="Sprite" groups=[
+"Dead",
+]]
+position = Vector2( -3.05176e-05, 11.7279 )
+scale = Vector2( 1.11412, 1.0561 )
+texture = ExtResource( 1 )
