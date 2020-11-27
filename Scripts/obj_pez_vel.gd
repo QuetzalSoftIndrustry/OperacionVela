@@ -21,8 +21,6 @@ var spr_muerto = preload("res://Sprites/spr_vel_Muerto.png")
 
 func _ready():
 	limite = get_viewport_rect().size
-	#$sprite.vframes = 4
-	#$sprite.hframes = 2
 
 # Funcion main (loop)
 func _physics_process(delta):
@@ -70,7 +68,7 @@ func _limites():
 	
 	#colisiones con los limites
 	position.x = clamp(position.x,0,limite.x)
-	position.y= clamp(position.y,0,limite.y)
+	position.y= clamp(position.y,240,limite.y)
 	pass
 
 func _animacion():
@@ -95,7 +93,6 @@ func _animacion():
 			
 	if (estado == ESTADOS.DANO):
 		var tween1 : Tween = Tween.new()
-		var tween2 : Tween = Tween.new()
 		self.add_child(tween1)
 		tween1.interpolate_property(self,"modulate", Color("ffffff"), Color("ff0000"),.1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 		tween1.start()
@@ -106,8 +103,5 @@ func _animacion():
 		yield(tween1,"tween_completed")
 		estado = ESTADOS.NORMAL
 	if (estado == ESTADOS.MUERTO):
-		#$sprite.vframes = 0
-		#$sprite.hframes = 0
-		#$sprite.texture = spr_muerto
 		$Sprite.visible = false
 		$Sprite_muerto.visible = true
