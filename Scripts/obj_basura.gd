@@ -10,6 +10,7 @@ var sprs_basura := [
 var tween
 
 func _ready():
+	
 	tween = Tween.new()
 	tween.interpolate_property(self,"modulate", Color("ffffff"), Color("00ffffff"),1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	self.add_child(tween)

@@ -12,20 +12,22 @@ var velosidad_reciduo : int = velosidad
 var movimiento : Vector2 = Vector2()
 const UP : Vector2 = Vector2(0,-1)
 var limite
+var tween1 : Tween 
 
-enum ESTADOS {NORMAL, DANO, MUERTO}
+enum ESTADOS {NORMAL, DANO, MUERTO, ATACANDO}
 var estado = ESTADOS.NORMAL
 
 var spr_muerto = preload("res://Sprites/spr_vel_Muerto.png")
 
-
 func _ready():
 	limite = get_viewport_rect().size
+	tween1 = Tween.new()
+	self.add_child(tween1)
 
 # Funcion main (loop)
 func _physics_process(delta):
 	# Inputs
-	if (estado != ESTADOS.MUERTO):
+	if (estado != ESTADOS.MUERTO && estado != ESTADOS.ATACANDO):
 		_inputs(delta)
 		
 	# Limites
@@ -44,6 +46,10 @@ func _inputs(delta):
 		self.rotate(-v_rot * dir * delta)
 	if Input.is_action_pressed("Abajo"):
 		self.rotate(v_rot * dir * delta)
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		estado = ESTADOS.ATACANDO
+		movimiento = Vector2()
 	pass
 
 func _mover(delta):
@@ -85,23 +91,32 @@ func _animacion():
 		$Sprite.flip_h = true
 	
 	# Animacion
-	if (estado != ESTADOS.MUERTO):
+	if (estado == ESTADOS.NORMAL):
 		if mov == 0:
 			$AnimationPlayer.play("anim_quieto")
 		else:
 			$AnimationPlayer.play("anim_nadando")
-			
+	
 	if (estado == ESTADOS.DANO):
-		var tween1 : Tween = Tween.new()
-		self.add_child(tween1)
 		tween1.interpolate_property(self,"modulate", Color("ffffff"), Color("ff0000"),.1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 		tween1.start()
 		
-		#yield(tween1,"tween_completed")
 		tween1.interpolate_property(self,"modulate", Color("ff0000"), Color("ffffff"),.1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 		tween1.start()
+		
 		yield(tween1,"tween_completed")
 		estado = ESTADOS.NORMAL
+	
 	if (estado == ESTADOS.MUERTO):
 		$Sprite.visible = false
 		$Sprite_muerto.visible = true
+	
+	if (estado == ESTADOS.ATACANDO):
+		tween1.interpolate_property($Sprite,"position", Vector2(0,0), Vector2(40*dir,0),.1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+		tween1.start()
+		
+		tween1.interpolate_property($Sprite,"position", Vector2(40*dir,0), Vector2(0,0),.2,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+		tween1.start()
+		
+		yield(tween1,"tween_completed")
+		estado = ESTADOS.NORMAL

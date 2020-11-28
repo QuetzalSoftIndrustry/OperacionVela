@@ -10,7 +10,7 @@ func _ready():
 	self.add_child(tween1)
 
 func _on_obj_red_body_entered(body):
-	if body.is_in_group("obj_player") && !tween1.is_active():
+	if body.is_in_group("obj_player") && !tween1.is_active() && body.estado == body.ESTADOS.ATACANDO:
 		
 		if vidas > 0:
 			tween1.interpolate_property(self,"modulate", Color("ffffff"), Color("ff0000"),1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
