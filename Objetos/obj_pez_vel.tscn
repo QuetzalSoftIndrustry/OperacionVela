@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/obj_pez_vel.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/spr_vel_nadando.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/spr_vel_Muerto.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/spr_burbuja.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 24.0
@@ -90,6 +91,16 @@ tracks/2/keys = {
 "values": [ ExtResource( 2 ), ExtResource( 2 ) ]
 }
 
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 1
+emission_sphere_radius = 24.0
+flag_disable_z = true
+gravity = Vector3( 0, -10, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.1
+scale_random = 0.3
+
 [node name="obj_player" type="KinematicBody2D" groups=[
 "obj_player",
 ]]
@@ -118,3 +129,10 @@ visible = false
 position = Vector2( 0, 32 )
 scale = Vector2( 1.16667, 1.375 )
 texture = ExtResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+z_index = -3
+amount = 13
+local_coords = false
+process_material = SubResource( 4 )
+texture = ExtResource( 4 )

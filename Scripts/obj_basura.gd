@@ -8,6 +8,7 @@ var sprs_basura := [
 	"res://Sprites/basura (llanta).png"]
 
 var tween
+var agua : bool = false
 
 func _ready():
 	
@@ -23,6 +24,12 @@ func _ready():
 	yield(get_tree().create_timer(1),"timeout")
 	queue_free()
 
+func _process(delta):
+	if self.position.y > 240 && !agua:
+		linear_velocity -= Vector2(0,+100)
+		self.gravity_scale = .2
+		$Particles2D.emitting = true
+		agua = true
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

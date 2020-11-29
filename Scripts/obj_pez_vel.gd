@@ -98,10 +98,10 @@ func _animacion():
 			$AnimationPlayer.play("anim_nadando")
 	
 	if (estado == ESTADOS.DANO):
-		tween1.interpolate_property(self,"modulate", Color("ffffff"), Color("ff0000"),.1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+		tween1.interpolate_property($Sprite,"modulate", Color("ffffff"), Color("ff0000"),.1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 		tween1.start()
 		
-		tween1.interpolate_property(self,"modulate", Color("ff0000"), Color("ffffff"),.1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+		tween1.interpolate_property($Sprite,"modulate", Color("ff0000"), Color("ffffff"),.1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 		tween1.start()
 		
 		yield(tween1,"tween_completed")

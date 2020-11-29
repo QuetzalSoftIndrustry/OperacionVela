@@ -63,4 +63,4 @@ func _crear_basura():
 	nueva_basura = BASURA.instance();
 	get_parent().add_child(nueva_basura)
 	nueva_basura.global_position = $Spawner_position.global_position
-	nueva_basura.apply_central_impulse(Vector2(200,0).rotated(rand_range(-2.5,1.5)))
+	nueva_basura.apply_central_impulse(Vector2(100,0).rotated(rand_range(-2.5,1.5)))
