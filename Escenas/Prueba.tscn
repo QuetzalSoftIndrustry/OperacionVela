@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Objetos/obj_pez_vel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objetos/obj_barco.tscn" type="PackedScene" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://Tilemap/Suelo.tres" type="TileSet" id=5]
 [ext_resource path="res://Sprites/GameOver.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/GameOverCanvasLayer.gd" type="Script" id=7]
+[ext_resource path="res://Sprites/Fondo_Mapa.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/5a239241dd70f69.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Coral_naranja.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Alga_2.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Algal.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "GameOverAnimation"
@@ -67,11 +72,27 @@ tracks/0/keys = {
 script = ExtResource( 3 )
 spr_vidas = ExtResource( 4 )
 
+[node name="Fondo_Mapa" type="Sprite" parent="."]
+position = Vector2( 576.612, 211.968 )
+scale = Vector2( 1.44, 1 )
+texture = ExtResource( 8 )
+
 [node name="fondo_agua" type="ColorRect" parent="."]
-margin_top = 240.0
-margin_right = 1152.0
-margin_bottom = 672.0
-color = Color( 0.223529, 0.25098, 0.67451, 1 )
+margin_left = 5.03967
+margin_top = 383.631
+margin_right = 1157.04
+margin_bottom = 815.631
+rect_scale = Vector2( 1, 0.64 )
+color = Color( 0.145098, 0.427451, 0.607843, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cielo" type="ColorRect" parent="."]
+visible = false
+margin_right = 1148.0
+margin_bottom = 239.0
+color = Color( 0.317647, 0.819608, 0.964706, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -104,6 +125,8 @@ script = ExtResource( 7 )
 modulate = Color( 0.992157, 0.992157, 0.992157, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 8.13889
+margin_bottom = 8.13892
 color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -115,10 +138,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -402.083
-margin_top = -183.143
-margin_right = 1043.92
-margin_bottom = 288.857
+margin_left = -405.08
+margin_top = -180.146
+margin_right = 1040.92
+margin_bottom = 291.854
 rect_scale = Vector2( 0.599739, 0.709361 )
 texture = ExtResource( 6 )
 __meta__ = {
@@ -143,3 +166,75 @@ __meta__ = {
 pause_mode = 2
 anims/GameOverAnimation = SubResource( 1 )
 "anims/Inicio De juego" = SubResource( 2 )
+
+[node name="Coral_naranja" type="Sprite" parent="."]
+position = Vector2( 28.0479, 617.106 )
+scale = Vector2( 0.399996, 0.360001 )
+texture = ExtResource( 10 )
+
+[node name="Coral_naranja3" type="Sprite" parent="."]
+position = Vector2( 328.067, 617.106 )
+scale = Vector2( 0.399996, 0.360001 )
+texture = ExtResource( 10 )
+
+[node name="Coral_naranja2" type="Sprite" parent="."]
+position = Vector2( 534.808, 619.225 )
+scale = Vector2( 0.399996, 0.360001 )
+texture = ExtResource( 10 )
+
+[node name="5a239241dd70f69" type="Sprite" parent="."]
+position = Vector2( 1114.4, 550.56 )
+scale = Vector2( 0.0591934, 0.0471422 )
+texture = ExtResource( 9 )
+
+[node name="5a239241dd70f70" type="Sprite" parent="."]
+position = Vector2( 178.947, 610.832 )
+scale = Vector2( 0.0591934, 0.0471422 )
+texture = ExtResource( 9 )
+
+[node name="5a239241dd70f71" type="Sprite" parent="."]
+position = Vector2( 709.139, 610.832 )
+scale = Vector2( 0.0591934, 0.0471422 )
+texture = ExtResource( 9 )
+
+[node name="Algal" type="Sprite" parent="."]
+position = Vector2( 95.3741, 604.536 )
+scale = Vector2( 1.4627, 1.23855 )
+texture = ExtResource( 12 )
+
+[node name="Algal2" type="Sprite" parent="."]
+position = Vector2( 813.688, 601.361 )
+scale = Vector2( 1.4627, 1.23855 )
+texture = ExtResource( 12 )
+
+[node name="Algal6" type="Sprite" parent="."]
+position = Vector2( 981.952, 602.949 )
+scale = Vector2( 1.4627, 1.23855 )
+texture = ExtResource( 12 )
+
+[node name="Algal5" type="Sprite" parent="."]
+position = Vector2( 639.073, 602.949 )
+scale = Vector2( 1.4627, 1.23855 )
+texture = ExtResource( 12 )
+
+[node name="Algal4" type="Sprite" parent="."]
+position = Vector2( 461.284, 602.949 )
+scale = Vector2( 1.4627, 1.23855 )
+texture = ExtResource( 12 )
+
+[node name="Algal3" type="Sprite" parent="."]
+position = Vector2( 267.804, 606.124 )
+scale = Vector2( 1.4627, 1.23855 )
+texture = ExtResource( 12 )
+
+[node name="Alga_4" type="Sprite" parent="."]
+position = Vector2( 397.279, 614.122 )
+texture = ExtResource( 11 )
+
+[node name="Alga_5" type="Sprite" parent="."]
+position = Vector2( 1063.99, 615.709 )
+texture = ExtResource( 11 )
+
+[node name="Alga_3" type="Sprite" parent="."]
+position = Vector2( 907.284, 614.449 )
+texture = ExtResource( 11 )
