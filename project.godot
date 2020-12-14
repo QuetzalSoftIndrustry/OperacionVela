@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="PI"
-run/main_scene="res://Escenas/Prueba.tscn"
+run/main_scene="res://Escenas/Interfaz.tscn"
 config/icon="res://icon.png"
 
 [display]
