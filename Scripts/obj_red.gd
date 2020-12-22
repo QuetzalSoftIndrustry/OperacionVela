@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 var vidas : int = 5
+var player = null
 var tween1 : Tween
 
 const PEZ = preload("res://Objetos/Pez_Vela_Camarada.tscn")
@@ -9,7 +10,18 @@ func _ready():
 	tween1 = Tween.new()
 	self.add_child(tween1)
 
+func _process(delta):
+	if (player != null):
+		_check_collision(player)
+
 func _on_obj_red_body_entered(body):
+	player = body
+
+func _on_obj_red_body_exited(body):
+	if body.is_in_group("obj_player"):
+		player = null
+
+func _check_collision(body):
 	if body.is_in_group("obj_player") && !tween1.is_active() && body.estado == body.ESTADOS.ATACANDO:
 		
 		if vidas > 0:

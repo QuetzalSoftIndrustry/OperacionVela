@@ -31,15 +31,6 @@ func quitar_vida():
 			get_tree().get_nodes_in_group("obj_player")[0]._animacion()
 			get_tree().paused = true
 			get_node("AnimationGameOver").play("GameOverAnimation")  
-			
-			
-	
-#func agregar_vida():
-	#vidas_p += 1
-	#var newVida = spr_vidas.intance()
-	#get_tree().get_nodes_in_group("HUD")[0].add_child(newVida)
-	#newVida.global_position.x += offset_vidas * (vidas_p - 1)
-	#listas_vidas[vidas_p-1].append(newVida)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+func asignar_valor_energia_HUD(energia):
+	$HUD/BarraEnergia.value = energia

@@ -4,6 +4,8 @@ extends KinematicBody2D
 export(int) var velosidad : int = 150
 export(float) var v_rot : float = 2.5
 export(float) var friccion : float = 5
+export(float,0,15) var energia : float = 15
+export(float) var tiempo_de_recarga : float = 2
 
 var dir : int = 0
 var mov : int = 0
@@ -12,7 +14,8 @@ var velosidad_reciduo : int = velosidad
 var movimiento : Vector2 = Vector2()
 const UP : Vector2 = Vector2(0,-1)
 var limite
-var tween1 : Tween 
+var tween1 : Tween
+var timerEnergia 
 
 enum ESTADOS {NORMAL, DANO, MUERTO, ATACANDO}
 var estado = ESTADOS.NORMAL
@@ -23,6 +26,13 @@ func _ready():
 	limite = get_viewport_rect().size
 	tween1 = Tween.new()
 	self.add_child(tween1)
+	
+	timerEnergia = Timer.new()
+	self.add_child(timerEnergia)
+	timerEnergia.one_shot = false
+	timerEnergia.wait_time = tiempo_de_recarga
+	timerEnergia.connect("timeout",self, "_agregar_energia")
+	timerEnergia.start()
 
 # Funcion main (loop)
 func _physics_process(delta):
@@ -36,6 +46,7 @@ func _physics_process(delta):
 	_animacion()
 	# Mover
 	_mover(delta)
+	
 
 func _inputs(delta):
 	# Detectar que tecla se pulso y asignarle un valor
@@ -48,8 +59,11 @@ func _inputs(delta):
 		self.rotate(v_rot * dir * delta)
 	
 	if Input.is_action_just_pressed("ui_accept"):
-		estado = ESTADOS.ATACANDO
-		movimiento = Vector2()
+		if (energia > 3):
+			estado = ESTADOS.ATACANDO
+			movimiento = Vector2()
+			energia -= 3
+			get_parent().asignar_valor_energia_HUD(energia)
 	pass
 
 func _mover(delta):
@@ -120,3 +134,7 @@ func _animacion():
 		
 		yield(tween1,"tween_completed")
 		estado = ESTADOS.NORMAL
+
+func _agregar_energia():
+	energia += 3
+	get_parent().asignar_valor_energia_HUD(energia)

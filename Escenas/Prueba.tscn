@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Objetos/obj_pez_vel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objetos/obj_barco.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Sprites/Coral_naranja.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/Alga_2.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Algal.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/spr_barra_energia_marco.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/spr_barra_energia_fill.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "GameOverAnimation"
@@ -78,9 +80,9 @@ scale = Vector2( 1.44, 1 )
 texture = ExtResource( 8 )
 
 [node name="fondo_agua" type="ColorRect" parent="."]
-margin_left = 5.03967
+margin_left = 0.03967
 margin_top = 383.631
-margin_right = 1157.04
+margin_right = 1152.04
 margin_bottom = 815.631
 rect_scale = Vector2( 1, 0.64 )
 color = Color( 0.145098, 0.427451, 0.607843, 1 )
@@ -97,12 +99,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 5 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 1179682, 3, 0, 1179683, 4, 0, 1245218, 6, 0, 1245219, 7, 0, 1310720, 4, 0, 1310721, 4, 0, 1310722, 4, 0, 1310723, 4, 0, 1310724, 4, 0, 1310725, 4, 0, 1310726, 4, 0, 1310727, 4, 0, 1310728, 4, 0, 1310729, 4, 0, 1310730, 4, 0, 1310731, 4, 0, 1310732, 4, 0, 1310733, 4, 0, 1310734, 4, 0, 1310735, 4, 0, 1310736, 4, 0, 1310737, 4, 0, 1310738, 4, 0, 1310739, 4, 0, 1310740, 4, 0, 1310741, 4, 0, 1310742, 4, 0, 1310743, 4, 0, 1310744, 4, 0, 1310745, 4, 0, 1310746, 4, 0, 1310747, 4, 0, 1310748, 4, 0, 1310749, 4, 0, 1310750, 4, 0, 1310751, 4, 0, 1310752, 4, 0, 1310753, 4, 0, 1310754, 7, 0, 1310755, 7, 0 )
-
 [node name="obj_player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 600, 456 )
 friccion = 2.0
@@ -112,10 +108,32 @@ position = Vector2( 552, 168 )
 tiempo_crear_basura = 1.0
 esperar_para_crear = 0.0
 velosidad = 200
+velosidad_Max = 500
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 1179682, 3, 0, 1179683, 4, 0, 1245218, 6, 0, 1245219, 7, 0, 1310720, 4, 0, 1310721, 4, 0, 1310722, 4, 0, 1310723, 4, 0, 1310724, 4, 0, 1310725, 4, 0, 1310726, 4, 0, 1310727, 4, 0, 1310728, 4, 0, 1310729, 4, 0, 1310730, 4, 0, 1310731, 4, 0, 1310732, 4, 0, 1310733, 4, 0, 1310734, 4, 0, 1310735, 4, 0, 1310736, 4, 0, 1310737, 4, 0, 1310738, 4, 0, 1310739, 4, 0, 1310740, 4, 0, 1310741, 4, 0, 1310742, 4, 0, 1310743, 4, 0, 1310744, 4, 0, 1310745, 4, 0, 1310746, 4, 0, 1310747, 4, 0, 1310748, 4, 0, 1310749, 4, 0, 1310750, 4, 0, 1310751, 4, 0, 1310752, 4, 0, 1310753, 4, 0, 1310754, 7, 0, 1310755, 7, 0 )
 
 [node name="HUD" type="CanvasLayer" parent="." groups=[
 "HUD",
 ]]
+
+[node name="BarraEnergia" type="TextureProgress" parent="HUD"]
+margin_left = 11.0
+margin_top = 2.0
+margin_right = 203.0
+margin_bottom = 50.0
+max_value = 15.0
+value = 15.0
+texture_under = ExtResource( 14 )
+texture_over = ExtResource( 13 )
+texture_progress = ExtResource( 14 )
+tint_under = Color( 0, 0.00784314, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GameOverCanvasLayer" type="CanvasLayer" parent="."]
 pause_mode = 2
@@ -125,8 +143,8 @@ script = ExtResource( 7 )
 modulate = Color( 0.992157, 0.992157, 0.992157, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 8.13889
-margin_bottom = 8.13892
+margin_top = -32.0
+margin_bottom = 8.0
 color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
