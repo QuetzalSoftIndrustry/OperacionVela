@@ -4,7 +4,7 @@ extends StaticBody2D
 export(bool) var tirar_basura : bool = true
 export(float) var tiempo_crear_basura : float = 4
 export(float) var esperar_para_crear : float = 1
-export(int) var vida : int = 10
+export(int) var vida : int = 8
 export(int) var velosidad : int = 100
 export(int) var velosidad_Max: int = 200
 var dir : int = 1
@@ -53,7 +53,7 @@ func _physics_process(delta):
 	# cambiar logia al perder la red
 	if (get_tree().get_nodes_in_group("obj_red").size() == 0):
 		velosidad = velosidad_Max
-		tiempo_crear_basura = .3
+		tiempo_crear_basura = .5
 		timer_basura.wait_time = tiempo_crear_basura
 		
 		$Area_de_dano/CollisionShape2D.disabled = false

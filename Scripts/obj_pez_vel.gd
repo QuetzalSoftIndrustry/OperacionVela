@@ -4,7 +4,7 @@ extends KinematicBody2D
 export(int) var velosidad : int = 150
 export(float) var v_rot : float = 2.5
 export(float) var friccion : float = 5
-export(float,0,15) var energia : float = 15
+export(float,0,15) var energia : float = 10
 export(float) var tiempo_de_recarga : float = 2
 
 var dir : int = 0
