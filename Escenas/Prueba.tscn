@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Objetos/obj_pez_vel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objetos/obj_barco.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Sprites/Algal.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/spr_barra_energia_marco.png" type="Texture" id=13]
 [ext_resource path="res://Sprites/spr_barra_energia_fill.png" type="Texture" id=14]
+[ext_resource path="res://Scripts/WinMessage.gd" type="Script" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "GameOverAnimation"
@@ -107,6 +108,7 @@ friccion = 2.0
 position = Vector2( 552, 168 )
 tiempo_crear_basura = 1.0
 esperar_para_crear = 0.0
+vida = 2
 velosidad = 200
 velosidad_Max = 500
 
@@ -256,3 +258,47 @@ texture = ExtResource( 11 )
 [node name="Alga_3" type="Sprite" parent="."]
 position = Vector2( 907.284, 614.449 )
 texture = ExtResource( 11 )
+
+[node name="WinMessage" type="CanvasLayer" parent="." groups=[
+"WinMessage",
+]]
+pause_mode = 2
+script = ExtResource( 15 )
+
+[node name="ColorRect" type="ColorRect" parent="WinMessage"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = -32.0
+margin_right = 1152.0
+margin_bottom = 672.0
+color = Color( 0, 0, 0, 0.878431 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WinMessage/ColorRect"]
+margin_left = 256.0
+margin_top = 224.0
+margin_right = 384.0
+margin_bottom = 256.0
+rect_scale = Vector2( 5, 5 )
+custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
+text = "You Win !! :D"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="WinMessage/ColorRect"]
+margin_left = 128.0
+margin_top = 416.0
+margin_right = 447.0
+margin_bottom = 461.0
+rect_scale = Vector2( 3, 3 )
+text = "Preciona cualquier tecla para continuar...
+"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -46,26 +46,26 @@ func _physics_process(delta):
 	else:
 		$Sprite.flip_h = false
 	
-	# Resivir daño del player
-	if (player != null):
-		_check_collision(player)
-	
 	# cambiar logia al perder la red
 	if (get_tree().get_nodes_in_group("obj_red").size() == 0):
-		velosidad = velosidad_Max
-		tiempo_crear_basura = .5
-		timer_basura.wait_time = tiempo_crear_basura
+		if (vida > 0):
+			velosidad = velosidad_Max
+			timer_basura.wait_time = tiempo_crear_basura
+			tiempo_crear_basura = .5
+		else:
+			timer_basura.stop()
+			velosidad -= 5
+			if (velosidad < 0): velosidad = 5
 		
 		$Area_de_dano/CollisionShape2D.disabled = false
 	
 	# Mover
-	if (vida > 0):
-		aceleracion = dir * velosidad * delta
-		position = Vector2(position.x + aceleracion, position.y)
-	else:
-		$Sprite.flip_h = true
-		aceleracion = -1 * velosidad * delta
-		position = Vector2(position.x + aceleracion, position.y)
+	aceleracion = dir * velosidad * delta
+	position = Vector2(position.x + aceleracion, position.y)
+	
+	# Resivir daño del player
+	if (player != null):
+		_check_collision(player)
 	
 
 func _crear_basura():
@@ -88,8 +88,9 @@ func _check_collision(body):
 			yield(tween1,"tween_completed")
 			vida -= 1
 		elif vida == 1:
-			$Sprite.flip_h = true
-			dir = -1
+			$Particles2D.emitting = true
+			$Sprite.texture = load("res://Sprites/barco_destruido.png")
+			
 			tween1.interpolate_property(self,"modulate", Color("ffffff"), Color("ff0000"),1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 			tween1.start()
 			
@@ -98,7 +99,10 @@ func _check_collision(body):
 			yield(tween1,"tween_completed")
 			vida -= 1
 			yield(get_tree().create_timer(3.0), "timeout")
-			queue_free()
+			print("Mostrar pantalla de win")
+			var msg = get_tree().get_nodes_in_group("WinMessage")[0]
+			msg.mostrar_pantalla()
+			#queue_free()
 
 func _on_Area_de_dano_body_entered(body):
 	if body.is_in_group("obj_player"):

@@ -136,5 +136,6 @@ func _animacion():
 		estado = ESTADOS.NORMAL
 
 func _agregar_energia():
-	energia += 3
+	if (energia < 15):
+		energia += 3
 	get_parent().asignar_valor_energia_HUD(energia)
