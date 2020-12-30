@@ -17,6 +17,6 @@ func _input(event):
 		tween.start()
 		$ColorRect.color = Color("000000")
 		yield(tween,"tween_completed")
+		get_tree().paused = false
 		get_tree().change_scene("res://Escenas/Interfaz.tscn")
-		#get_tree().paused = false
 		#get_tree().reload_current_scene()

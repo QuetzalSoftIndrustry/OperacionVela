@@ -14,8 +14,6 @@ func _on_BotonOpciones_pressed():
 	$BotonAtras.show()
 	$Atras.show()
 	$BotonComoJugar.show()
-	$Sonido.show()
-	$BotonSonido.show()
 
 func _on_BotonAtras_pressed():
 	$FondoMenu.show()
@@ -30,8 +28,7 @@ func _on_BotonAtras_pressed():
 	$BotonAtras.hide()
 	$Atras.hide()
 	$BotonComoJugar.hide()
-	$Sonido.hide()
-	$BotonSonido.hide()
+	
 	$ColorRect.hide()
 	$Controles.hide()
 	$Vida.hide()
@@ -40,8 +37,7 @@ func _on_BotonAtras_pressed():
 
 func _on_BotonComoJugar_pressed():
 	$BotonComoJugar.hide()
-	$Sonido.hide()
-	$BotonSonido.hide()
+	
 	$ColorRect.show()
 	$Controles.show()
 	$Vida.show()

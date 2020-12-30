@@ -4,7 +4,7 @@ extends StaticBody2D
 export(bool) var tirar_basura : bool = true
 export(float) var tiempo_crear_basura : float = 4
 export(float) var esperar_para_crear : float = 1
-export(int) var vida : int = 8
+export(int) var vida : int = 10
 export(int) var velosidad : int = 100
 export(int) var velosidad_Max: int = 200
 var dir : int = 1

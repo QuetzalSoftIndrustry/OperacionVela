@@ -103,12 +103,13 @@ __meta__ = {
 [node name="obj_player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 600, 456 )
 friccion = 2.0
+energia = 10.0
+tiempo_de_recarga = 3.0
 
 [node name="obj_barco" parent="." instance=ExtResource( 2 )]
 position = Vector2( 552, 168 )
 tiempo_crear_basura = 1.0
 esperar_para_crear = 0.0
-vida = 2
 velosidad = 200
 velosidad_Max = 500
 
@@ -276,13 +277,17 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="WinMessage/ColorRect"]
+anchor_left = -0.0013006
+anchor_top = -0.0021283
+anchor_right = -0.0013006
+anchor_bottom = -0.0021283
 margin_left = 256.0
 margin_top = 224.0
 margin_right = 384.0
 margin_bottom = 256.0
 rect_scale = Vector2( 5, 5 )
 custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
-text = "You Win !! :D"
+text = "GANASTE!!! :D"
 align = 1
 valign = 1
 __meta__ = {
@@ -290,10 +295,10 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="WinMessage/ColorRect"]
-margin_left = 128.0
-margin_top = 416.0
-margin_right = 447.0
-margin_bottom = 461.0
+margin_left = 114.515
+margin_top = 421.993
+margin_right = 433.515
+margin_bottom = 466.993
 rect_scale = Vector2( 3, 3 )
 text = "Preciona cualquier tecla para continuar...
 "

@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var vidas : int = 3
+var vidas : int = 5
 var player = null
 var tween1 : Tween
 

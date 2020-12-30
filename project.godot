@@ -15,9 +15,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="PI"
+config/name="OperacionVela"
 run/main_scene="res://Escenas/Interfaz.tscn"
-config/icon="res://icon.png"
+config/icon="res://Sprites/spr_peces_salvados.png"
+config/windows_native_icon="res://Sprites/spr_peces_salvados.ico"
 
 [display]
 
